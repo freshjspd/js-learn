@@ -13,11 +13,15 @@ console.log("Hello, World!!!");
 /******************** */
 // обьявление переменных
 let name = "Julia"; // string
-let year = 2023;  // number
-let month = "Feb";  //string
-let a = 10, b = 20, c = 30; // number
-let pi = 3.141596;  //number
-let user1 = "Vasya Testovich", user2 = 'Masha Fox', user3 = 'Tom Adson';  // string
+let year = 2023; // number
+let month = "Feb"; //string
+let a = 10,
+  b = 20,
+  c = 30; // number
+let pi = 3.141596; //number
+let user1 = "Vasya Testovich",
+  user2 = "Masha Fox",
+  user3 = "Tom Adson"; // string
 let isMale = false; // boolean
 let isWeekend = true; // boolean
 
@@ -27,7 +31,7 @@ console.log(year);
 console.log(month, year);
 console.log("Month is", month, "and year is", year);
 
-console.log("Sum a and b and c is", a+b+c);
+console.log("Sum a and b and c is", a + b + c);
 
 // работа с переменными
 let x = 100;
@@ -35,23 +39,24 @@ x = 1;
 x = 0;
 x = 9;
 console.log(x);
-x = 'hello';
+x = "hello";
 console.log(x);
 x = 200;
 console.log(x);
-x = 'Tom';
+x = "Tom";
 x = "John Smith";
 console.log(x);
 
-let y = 5, y2 = 20;
+let y = 5,
+  y2 = 20;
 x = y;
-console.log('x=',x,'y=',y);
+console.log("x=", x, "y=", y);
 x = y2;
-console.log('x=',x,'y=',y);
+console.log("x=", x, "y=", y);
 
 // арифм операции
 x = 10;
-x = 10 + 4 * 5 - 2 + (3 + 4)/2;
+x = 10 + 4 * 5 - 2 + (3 + 4) / 2;
 console.log(x);
 x = 10;
 y = 5;
@@ -72,15 +77,14 @@ console.log(x);
 
 // инкремент
 x = x + 1;
-console.log('инкремент',x);
+console.log("инкремент", x);
 x++;
-console.log('инкремент',x);
+console.log("инкремент", x);
 // декремент
 x = x - 1;
-console.log('декремент',x);
+console.log("декремент", x);
 x--;
-console.log('декремент',x);
-
+console.log("декремент", x);
 
 /* практика
 
@@ -99,8 +103,9 @@ console.log('декремент',x);
 // task1
 let x1 = 11;
 let x2 = true;
-let x3 = "java script", x4 = "100";
-console.log(x1,x2,x3,x4);
+let x3 = "java script",
+  x4 = "100";
+console.log(x1, x2, x3, x4);
 
 // task2
 let greeting = "Hello, ";
@@ -109,10 +114,48 @@ console.log(greeting, userName, "!!!!");
 //alert(greeting+userName+"!!!!");
 
 // task3
-let varA = 10, varB = 20;
+let varA = 10,
+  varB = 20;
 let varC = varA - varB;
 let varD = varC;
 let res;
 res = varC + varD;
 console.log(varA, varB, varC, varD, res);
 
+/*
+task 4. написать программу перевода метры в сантиметры
+task 5. подчитать площать прямоугольника (s = a *b)
+*/
+
+/*
+// task4
+let valM = 20;
+let valCM;
+valCM = valM * 100;
+console.log('task4 ',valCM);
+
+// task5
+let sizeA, sizeB, square;
+sizeA = 10.3;
+sizeB = 20.7;
+square = sizeA * sizeB;
+console.log('task5 ',square);
+*/
+
+// tasks with prompt
+let test;
+test = prompt("Введи значение переменной test");
+console.log("Test is ", test);
+
+// task4
+let valM = prompt("Введи значение в метрах");
+let valCM;
+valCM = valM * 100;
+console.log("task4 ", valCM, "cm");
+
+// task5
+let sizeA, sizeB, square;
+sizeA = prompt("Введи значение ширины");;
+sizeB = prompt("Введи значение длины");;
+square = sizeA * sizeB;
+console.log("task5 ", square);
