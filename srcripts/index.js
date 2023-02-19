@@ -13,8 +13,7 @@ function sumForLimits(limit1, limit2){
 function sumForLimitsAdv(limit1, limit2, value){
     let sum = 0;
     for(let i = limit1; i<= limit2; i++){
-        if(i%value == 0) {
-            sum = sum + i;
+        (i%value == 0) ? sum = sum + i : sum;
         }
     }
     return sum;
@@ -25,12 +24,10 @@ function sumForLimitsAdv(limit1, limit2, value){
 // zeros(77, 5)   =>   0000077
 // *** // zeros(-77, 5)   =>   -0000077
 
+
 function zeros(value, countZeros){
     let res = '';
-    if(value < 0) { 
-        res = res + '-'; 
-        value = -value; 
-    }
+    (value < 0) ? { res = res + '-', value = -value} : value;
     for(i=1; i<=countZeros; i++){
         res = res + '0';
     }
@@ -38,4 +35,6 @@ function zeros(value, countZeros){
     return res;
 }
 
-console.log( zeros(-77,5));
+
+console.log( zeros(77,5));
+
