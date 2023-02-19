@@ -1,18 +1,20 @@
-function helloFun(){
-    const userName = prompt('Enter your name');   
-    const helloMsg = "Hello, " + userName + "!!"; 
-    alert(helloMsg);
+function helloFun(userName) {
+  const helloMsg = "Hello, " + userName + "!!";
+  alert(helloMsg);
 }
 
-function goodMorning(){
-    console.log('Good morning!');
+const user = prompt("Enter your name");
+helloFun(user);
+
+function sum(a, b) {
+  const result = a + b;
+  return result;
 }
 
-function goodEvening(){
-    console.log('Good evening!');
-}
+let result;
+result = sum(2, 2);
+console.log(result);
+result = sum(10, 20);
+console.log(result);
 
-helloFun();
-goodMorning();
-goodEvening();
-
+console.log( sum(100, 50));
