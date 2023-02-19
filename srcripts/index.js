@@ -1,22 +1,41 @@
-function sum(a,b){
-    return a+b;
+// task 2
+// функцию , которая считает сумму чисел от limit1 до limit2
+// *функцию , которая считает сумму чисел от limit1 до limit2 но кратные value
+
+function sumForLimits(limit1, limit2){
+    let sum = 0;
+    for(let i = limit1; i<= limit2; i++){
+        sum = sum + i;
+    }
+    return sum;
 }
 
-function sub(a,b){
-    return a-b;
+function sumForLimitsAdv(limit1, limit2, value){
+    let sum = 0;
+    for(let i = limit1; i<= limit2; i++){
+        if(i%value == 0) {
+            sum = sum + i;
+        }
+    }
+    return sum;
 }
 
-function divi(a,b){
-    return a/b;
+// task 3
+// функцию которая дополняет число нулями
+// zeros(77, 5)   =>   0000077
+// *** // zeros(-77, 5)   =>   -0000077
+
+function zeros(value, countZeros){
+    let res = '';
+    if(value < 0) { 
+        res = res + '-'; 
+        value = -value; 
+    }
+    for(i=1; i<=countZeros; i++){
+        res = res + '0';
+    }
+    res = res + value;
+    return res;
 }
 
-function mult(a,b){
-    return a*b;
-}
-
-let x1 = Number(prompt('Enter 1 value'));
-let x2 = Number(prompt('Enter 2 value'));
-console.log( sum(x1,x2));
-console.log( sub(x1,x2));
-console.log( divi(x1,x2));
-console.log( mult(x1,x2));
+console.log( zeros(-77,5));
