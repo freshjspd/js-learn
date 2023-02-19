@@ -1,10 +1,18 @@
-// switch-case
-
-let x = prompt('Enter number of month');
-switch(x){
-    case '1': console.log('J'); break;
-    case '2': console.log('F'); break;
-    //....
-    default: console.log('Error'); break;
-
+function helloFun(){
+    const userName = prompt('Enter your name');   
+    const helloMsg = "Hello, " + userName + "!!"; 
+    alert(helloMsg);
 }
+
+function goodMorning(){
+    console.log('Good morning!');
+}
+
+function goodEvening(){
+    console.log('Good evening!');
+}
+
+helloFun();
+goodMorning();
+goodEvening();
+
