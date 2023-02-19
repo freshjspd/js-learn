@@ -1,18 +1,10 @@
-// спросить у пользователя сколько будет 2+2 
-// и задавать вопрос до тех пор пока он не ответит правильно
+// switch-case
 
-let question = '2+2=?';
-let userAnswer;
-let compAnswer = 4;
+let x = prompt('Enter number of month');
+switch(x){
+    case '1': console.log('J'); break;
+    case '2': console.log('F'); break;
+    //....
+    default: console.log('Error'); break;
 
-while(true){
-    userAnswer = prompt(question);
-    if(userAnswer == compAnswer){ 
-        alert('yes');
-        break;
-    }
-    else{ 
-        alert('no');
-    }
 }
-
