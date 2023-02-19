@@ -1,20 +1,22 @@
-function helloFun(userName) {
-  const helloMsg = "Hello, " + userName + "!!";
-  alert(helloMsg);
+function sum(a,b){
+    return a+b;
 }
 
-const user = prompt("Enter your name");
-helloFun(user);
-
-function sum(a, b) {
-  const result = a + b;
-  return result;
+function sub(a,b){
+    return a-b;
 }
 
-let result;
-result = sum(2, 2);
-console.log(result);
-result = sum(10, 20);
-console.log(result);
+function divi(a,b){
+    return a/b;
+}
 
-console.log( sum(100, 50));
+function mult(a,b){
+    return a*b;
+}
+
+let x1 = Number(prompt('Enter 1 value'));
+let x2 = Number(prompt('Enter 2 value'));
+console.log( sum(x1,x2));
+console.log( sub(x1,x2));
+console.log( divi(x1,x2));
+console.log( mult(x1,x2));
