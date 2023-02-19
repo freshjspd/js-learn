@@ -1,19 +1,18 @@
-let i;
-for(i=1; i<=10; i++){
-    console.log(i);
-    if(i==7) break;
-}
-console.log('----------');
+// спросить у пользователя сколько будет 2+2 
+// и задавать вопрос до тех пор пока он не ответит правильно
 
-for(i=1; i<=10; i++){
-    if(i==7) continue;
-    console.log(i);
-}
+let question = '2+2=?';
+let userAnswer;
+let compAnswer = 4;
 
-console.log('----------');
-i=1;
 while(true){
-    console.log(i);
-    if(i>=5) break;
-    i++;
+    userAnswer = prompt(question);
+    if(userAnswer == compAnswer){ 
+        alert('yes');
+        break;
+    }
+    else{ 
+        alert('no');
+    }
 }
+
