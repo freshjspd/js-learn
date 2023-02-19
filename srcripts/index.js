@@ -1,40 +1,44 @@
-// task 2
-// функцию , которая считает сумму чисел от limit1 до limit2
-// *функцию , которая считает сумму чисел от limit1 до limit2 но кратные value
+console.log('1:' , sum1(2,2));
+// console.log('2:' , sum2(2,2)); !!!Error
 
-function sumForLimits(limit1, limit2){
-    let sum = 0;
-    for(let i = limit1; i<= limit2; i++){
-        sum = sum + i;
-    }
-    return sum;
+function sum1(a,b){
+    return a+b;
 }
 
-function sumForLimitsAdv(limit1, limit2, value){
-    let sum = 0;
-    for(let i = limit1; i<= limit2; i++){
-        (i%value == 0) ? sum = sum + i : sum;
-        }
-    }
-    return sum;
-}
-
-// task 3
-// функцию которая дополняет число нулями
-// zeros(77, 5)   =>   0000077
-// *** // zeros(-77, 5)   =>   -0000077
-
-
-function zeros(value, countZeros){
-    let res = '';
-    (value < 0) ? { res = res + '-', value = -value} : value;
-    for(i=1; i<=countZeros; i++){
-        res = res + '0';
-    }
-    res = res + value;
-    return res;
+let sum2 = function(a,b){
+    return a+b;
 }
 
 
-console.log( zeros(77,5));
+console.log('-------------------');
+console.log('1:' , sum1(2,2));
+console.log('2:' , sum2(2,2));
 
+// стрелочные функцию
+let sum3 = (a,b) => a+b;
+
+let sum4 = (a,b) => {
+    let result = a+b;
+    return result;
+}
+
+console.log('3:' , sum3(2,2));
+console.log('4:' , sum4(2,2));
+
+
+/*
+easy calc with array functions
+*/
+
+const sum = (a,b) => a+b;
+const sub = (a,b) => a-b;
+const divi = (a,b) => a/b;
+const mult = (a,b) => a*b;
+
+
+let x1 = Number(prompt('Enter 1 value'));
+let x2 = Number(prompt('Enter 2 value'));
+console.log( sum(x1,x2));
+console.log( sub(x1,x2));
+console.log( divi(x1,x2));
+console.log( mult(x1,x2));
