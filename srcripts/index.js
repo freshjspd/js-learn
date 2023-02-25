@@ -1,37 +1,84 @@
-let a = [1,4,-4,3,8,-1, -6, 0, 0, -3, 2, -9, 11, 0, 2], i;
-let sumNeg=0, countNeg=0;
-let arrNegEl = [] , j =0 ;
+let a = [3,10,20,30,40,50], result; 
 
-for(i=0; i<a.length; i++){
-    if(a[i] < 0){
-        sumNeg = sumNeg + a[i];
-        countNeg++;
-        a[i] = 0;
-        arrNegEl[j] = i;
-        j++;
-    }
+/*
+//1
+console.log('-----------');
+a.forEach( el => console.log(el));
+//2
+console.log('-----------');
+a.forEach( (el, i) => console.log(el, ':', i));
+//3
+console.log('-----------');
+function out(el, i, arr){
+    console.log(i,el);
 }
 
+a.forEach(out);
+*/
+
+// умножить элементы массива на 2
+//forEach
+a.forEach(el => console.log(el*2));
 console.log(a);
-console.log('Sum neg el ',sumNeg);
-console.log('Count neg el ', countNeg);
-console.log(arrNegEl);
+//map
+result = a.map(el => el*2);
+console.log(result);
 
-function task5(a,n){
-    let res = [];
-    for(let i=0; i<n; i++){
-        res[i] = a[i];
-    }
-    return res;
+//ищем четные элементы массива
+//find
+result = a.find(el => (el%2 == 0));
+console.log(result);
+//filter
+result = a.filter(el => (el%2 == 0));
+console.log(result);
+//findIndex
+result = a.findIndex(el => (el%2 == 0));
+console.log(result);
+
+
+
+//проверить положительные ли элементы массива 
+//some
+console.log( a.some(el => el>0) );
+//every
+console.log( a.every(el => el>0) );
+
+
+//проверить на четность массив
+
+//1 variant
+result = a.every(el => el%2 == 0);
+// 2 variant
+
+result = a.every(isEven);
+
+function isEven(el, i, arr){
+    return (el%2 == 0) ? true : false;
 }
 
-function task8(arr, index1, index2){
-    let buf;
-    buf = arr[index1];
-    arr[index1] = arr[index2];
-    arr[index2] = buf;
-    return arr;
-}
+// concat
+console.log([1,2,3].concat([-1,-2,-3,-4]));
+// join
+console.log([192,156,34,12].join('.'));
+console.log(['S123A','1045','D2300','0012'].join('-'));
 
+
+// sum 
+let sum=0;
+for(let i=0; i<a.length; i++){
+    sum += a[i];
+}
+console.log(sum);
+
+// new!!!!!
+//сумма массива умноженного на 2
+result = a.reduce( (summa, el) => summa + el*2);
+console.log(result);
+
+
+
+let w = ['angel', 'clown', 'mandarin', 'sturgeon', 'x1', 'x2'];
+result = w.splice(2, 2, 'hello');
+console.log(w);
 
 
