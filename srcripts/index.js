@@ -1,45 +1,19 @@
-// 1,2,3,4,5
-// 10,20,30
+//tasks
 
-//result :  5,4,3,2,1,10,20,30  => 5,4,3,2,1,-1,30
-//result :  "5,4,3,2,1,10,20,30"
+// 1 соединить две строки в одну и результат перевернуть
+let str1, str2;
+let a1 = str1.split(' '), a2 = str2.split(' ');
+//let result = str1.split(' ').concat(str2.split(' ')).reverse().join(' ');
+let result = a1.concat(a2).reverse().join(' ');
 
-let a1 = [1,2,3,4,5], a2 = [10,20,30];
+// 2 проверить является ли слово полиндромом
+// abcdeffedcba
 
-console.log(a1.reverse().concat(a2));
-console.log( a1.reverse().concat(a2).splice(5,2,-1) );
-
-result =  a1.reverse().concat(a2);
-a1.splice(5,2,-1);
-console.log(result);
-
-function task1(a1, a2){
-    let res = [] , i, j, res2 = [];
-    for(i=0; i<a1.length; i++){
-        res[i] = a1[a1.length - i -1];
-    }
-    for(j=0; j<a2.length; j++, i++){
-        res[i] = a2[j];
-    }
-    for(i=0, j=0; i<res.length; i++){
-        if(i>=5 && i<=6) continue;
-        res2[j] = res[i];
-        j++;
-    }
-    return res2;
+function pal(word){
+    return word == word.split('').reverse().join('') ? true : false;
 }
 
-// создать функцию которая возвращает обьдинение массивов без 0 и отриц элементов
+// 3* функцию которая преобразует 1-ю букву каждого слова в верхний регистр
 
-function task2(arr1, arr2){
-    return arr1.concat(arr2).filter(el => el > 0);
-}
-
-[0,1,2,3,4,5,6,7,8,9]
-index1 = 2;
-index2 = 4;
-
-a.splice(index1, 0 , a.splice(index2));
-a.splice(index1 , 0, [0,1,2,3]);
-
-0,1,   4,5,6,7,8,9, 2,3,4,5,6,7,8,9
+let str;
+result = str.split(' ').map(el => el[0].toUpperCase()+ el.substring(1)).join(' ');
