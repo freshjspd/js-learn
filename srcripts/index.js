@@ -1,19 +1,63 @@
-//tasks
+/*
+tasks
 
-// 1 соединить две строки в одну и результат перевернуть
-let str1, str2;
-let a1 = str1.split(' '), a2 = str2.split(' ');
-//let result = str1.split(' ').concat(str2.split(' ')).reverse().join(' ');
-let result = a1.concat(a2).reverse().join(' ');
+1. Подсчитать сумму по модулю элементов массива
+2. Вывести индексы отрицальтелых элементов массива
+3. Вывести колиство отрицательных элементов маасива
+4. Даны два массива. Обьединить и преобразовать в строку
+-----------------------------------------------------
+5. Отфильтровать массив удалив все отрицательные элементы
+================================================
+6. Предложение превратить в название переменной в стиле camel case
+"my new variable" => myNewVariable
+7. удалить все знаки из предложения (оставить только буквы и цифры
+*/
 
-// 2 проверить является ли слово полиндромом
-// abcdeffedcba
-
-function pal(word){
-    return word == word.split('').reverse().join('') ? true : false;
+function task1(arr){
+    let sum =0 ;
+    for(let i=0; i<arr.length; i++){
+        sum += arr[i];
+    }
+    return Math.abs(sum);
 }
 
-// 3* функцию которая преобразует 1-ю букву каждого слова в верхний регистр
+function task2(arr){
+    let result = [];
+    for(let i =0, j=0 ; i<arr.length; i++){
+        if(arr[i] < 0){
+            result[j] = i;
+            j++;
+        }
+    }
+    return result;
+}
 
-let str;
-result = str.split(' ').map(el => el[0].toUpperCase()+ el.substring(1)).join(' ');
+function task3(arr){
+    let j=0;
+    for(let i =0; i<arr.length; i++){
+        if(arr[i] < 0){
+            j++;
+        }
+    }
+    return j;
+}
+
+function task4(arr1, arr2){
+    for(let i=0; i < arr2.length; i++){
+        arr1.push(arr2[i]);
+    }
+    return arr1.toString();
+}
+
+function task5(arr){
+    let result = [];
+    for(let i=0, j=0; i<arr.length; i++){
+        if(arr[i] < 0) continue;
+        result[j] = arr[i];
+        j++;
+    }
+}
+
+
+
+
