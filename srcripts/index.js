@@ -12,6 +12,19 @@ tasks
 "my new variable" => myNewVariable
 7. удалить все знаки из предложения (оставить только буквы и цифры
 */
+function getRandomArray(maxValue, countArray){
+    let arr = new Array(countArray);
+    arr.forEach(el => Math.floor(Math.random() * maxValue));
+    /*
+    let arr = [];
+    for(let i=0; i<countArray; i++){
+        arr[i] = Math.floor(Math.random() * maxValue);
+    }
+    */
+    console.log(arr);
+    return arr;
+    
+}
 
 function task1(arr){
     let sum =0 ;
@@ -58,6 +71,27 @@ function task5(arr){
     }
 }
 
+let a = [1, 2, -5, 2, 0, -1, -2, 9 , 0, -4, 1];
+
+let res1 = Math.abs(a.reduce((sum, el) => sum + el));
+
+a.forEach(el => (el<0) ? console.log(el) : el );
+
+let res3 = a.reduce((sum, el) => (el<0) ? sum + el : sum);
+console.log('task3=',res3);
+
+let res5 = a.filter(el => el>0);
+
+let res5_2 = a.forEach((el, i) => (el <=0 ) ? a.splice(i,1): el);
+console.log(a);
 
 
+let str;
+result = str.split(' ').map(el => el[0].toUpperCase()+ el.slice(1)).join();
 
+
+let res7 = str.split('').forEach(el => (
+    el.charCodeAt([0]) >=48 && el.charCodeAt([0])) <=122 
+    ? console.log(el) 
+    : el
+);
