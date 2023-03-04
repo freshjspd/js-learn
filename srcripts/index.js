@@ -1,46 +1,20 @@
-class User{
-    #login;
-    #password;
-    constructor(login, password, fullName="anov"){
-        this.#login = login;
-        this.#password = password;
-        this.fullName = fullName;
-    }
-    set login(value){
-        this.login = value;
-    }
-    set password(value){
-        this.password = value;
-    }
-    get login(){
-        return this.login;
-    }
-    get password(){
-        return this.password;
+// класс родитель
+class Client{
+    constructor(fullname, tel){
+        this.fullname = fullname;
+        this.tel = tel;
     }
 }
 
-class User2{
-    constructor(login, password, fullName="anov"){
-        this._login = login;
-        this._password = password;
-        this.fullName = fullName;
+// класс наследника
+class User extends Client{
+    constructor(login, password, fullname, tel){
+        super(fullname, tel); // конструктор родителя
+        this.login = login;
+        this.password = password;
     }
-    set login(value){
-        this._login = value;
-    }
-    set password(value){
-        this._password = value;
-    }
-    get login(){
-        return this._login;
-    }
-    get password(){
-        return this._password;
-    }
-}
+};
 
-let user1 = new User("tom123", "qwerty");
-console.log(user1);
+let user1 = new User('vasya1', 'qwerty', 'Vasya Vasya', '1928371984');
 
 
