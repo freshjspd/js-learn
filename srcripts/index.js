@@ -1,29 +1,25 @@
-let user = {
-    name: 'Nike',
-    surname: 'Adson',
-    age: 20,
-    isMale: true,
-    hello: function(){ console.log("Hello!");},
-    hello2(){
-        console.log("Hello!!!!!!!!!!!");
+const rect = {
+    a: 0,
+    b: 0,
+    square: function(){
+        return this.a * this.b;
     },
-    greeting: function(){
-        console.log("Hello! I am ", this.name, this.surname, '!');
+    setA: function(value){
+        this.a = value;
     },
-    incAge: function(){
-        this.age++;
+    setB: function(value){
+        this.b = value;
     },
-    hiFriend: function(friend){
-        console.log(`Hello, ${friend} !`);
-    }
-
+    getA: function(){
+        return this.a;
+    },
+    getB: function(){
+        return this.b;
+    },
 };
 
-console.log(user.name, user.surname);
-user.hello();
-user.hello2();
-user.greeting();
-user.hiFriend('Ann');
-user.hiFriend({name: 'Tom', surname: 'Fox'});
-
-delete user.hello2;
+Object.freeze(rect);
+console.log(rect.square());
+rect.setA(200);
+rect.setB(500);
+console.log(rect.square());
