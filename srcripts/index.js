@@ -1,66 +1,79 @@
-// обьект покупка  + дата покупки, клиент
-// название товара, количесво товара, цена за 1 единицу
+let users = [];
 
-// 1 подсчитать стоимость покупки
-// 2 начислить скидку 5% если сумма итоговая больше 1000 грн
+class User{
+    constructor(nameValue="anov", surnameValue = "anov"){
+        this.name = nameValue;
+        this.surname = surnameValue;
+    }
+    /*
+    constructor(name, surname){
+        this.name = name;
+        this.surname = surname;
+    }
+    */
+};
 
-let order = {
-    date: '01-01-2023', 
-    customer: 'Tomas',
-    product: 'pen',
-    count: 1000,
-    price: 12.5,
-    sum: 0,
-    totalSum: function(){
-        this.sum = this.price * this.count;
-        return this.sum;
-    },
-    sale: function(limit, prSale){
-        if(this.sum >= limit){
-            this.sum *= (100-prSale)/100;
-        }
-        return this.sum;
-    }    
+let user1 = new User("Tom", "Fox");
+console.log(user1);
+let user2 = new User("Ann", "Smith");
+console.log(user2);
 
+for(let i=0; i<20; i++){
+    users[i] = new User(`name${i}`, `surname${i}`);
 }
 
-order.sum();
-order.sale(1000,5);
+const user3 = new User();
+console.log(user3);
 
 
+class Car{
+    constructor(color, year, model, engineCapacity){
+        this.color = color;
+        this.year = year;
+        this.model = model;
+        this.engineCapacity = engineCapacity;
+    }
+    printObject(){
+        // this - весь текущий обьект
+        console.log(this);
+    }
+}
+
+let car1 = new Car("Gray", 2004, "Skoda", "Octavia", 2.0)
+car1.printObject();
 
 
 /*
-let purchase = {
-  date: new Date(), // Дата покупки
-  customer: 'Tomas', // Клиент
-  items: [ // Массив товаров
-    { name: 'Книга', quantity: 2, price: 100 },
-    { name: 'Ручка', quantity: 5, price: 10 },
-    { name: 'Тетрадь', quantity: 3, price: 50 }
-  ],
- 
-  getTotalCost() {
-    let totalCost = 0; // Итоговая стоимость покупки
-
-    for (let item of this.items) {
-      totalCost += item.price * item.quantity;
+class Rect{
+    constructor(a,b){
+        this.a = a;
+        this.b = b;
     }
-    
-    if (totalCost > 1000) {
-      totalCost *= 0.95;
+    calcSquare(){
+        return this.a * this.b;
     }
- 
-    return totalCost.toFixed(2);
-  }
-};
-
-
-console.log(Дата покупки: ${purchase.date.toLocaleDateString()});
-console.log(Клиент: ${purchase.customer});
-console.log('Список товаров:');
-for (let item of purchase.items) {
-  console.log(${item.name}: ${item.quantity} шт. по ${item.price} грн);
 }
-console.log(Итоговая стоимость покупки: ${purchase.getTotalCost()} грн);
+
+let r1 = new Rect(20,4);
+console.log( r1.calcSquare());
 */
+
+class Rect{
+    constructor(a,b){
+        this.a = a;
+        this.b = b;
+        //this.square = 0;
+    }
+    calcSquare(){
+        this.square = this.a * this.b;
+        return this.square;
+    }
+    outSquare(){
+        console.log(this.square);
+    }
+}
+
+let r1 = new Rect(20,4);
+r1.calcSquare();
+r1.outSquare();
+
