@@ -1,51 +1,63 @@
-// класс родитель
-class Client{
-    constructor(fullname, tel){
-        this.fullname = fullname;
-        this.tel = tel;
-    }
-    printPersonalInfo(){
-        console.log(this.fullname, this.tel);
-    }
+/*
+ООП
+class - класс для создания обьекта
+сложный/составной/пользовательский тип данных, который описывает обьект,
+набора свойств
+"станок" / "прибор"
+=>
+результат : создание обьекта
+
+{
+    свойство: значение,
+    свойство: значение,
+    свойство: значение,
+    свойство: значение,
 }
 
-// класс наследника
-class User extends Client{
-    constructor(login, password, fullname, tel){
-        super(fullname, tel); // конструктор родителя
+{login: "", password: ""};
+
+
+class Name{
+    constructor(params){}
+};
+
+constructor - функция которая описывает создание будущих обьектов
+параметры - приминив(число, строка, ....), массив, обьект
+
+this - указатель на текущий обьект / указатель на самого себя
+
+*/
+
+class User{
+    constructor(login, password){
         this.login = login;
         this.password = password;
     }
-    printAuth(){
-        console.log("login:",this.login,"password:",this.password);
+    out(){
+        console.log(this);
     }
 };
 
-let user1 = new User('vasya1', 'qwerty', 'Vasya Vasya', '1928371984');
-user1.printPersonalInfo();
-user1.printAuth();
+/*
+const user1 = new User('Vasya', 'admin');
+const user2 = new User('superman', 'qwerty');
+console.log('user1:', user1);
+console.log('user2:', user2);
+console.log('--------------------');
+user1.out();
+user2.out();
+*/
 
-
-
-class Calc{
-    constructor(x,y){
-        this.x = x;
-        this.y = y;
+class Stud{
+    constructor(name, surname, auth){
+        this.name = name;
+        this.surname = surname;
+        this.auth = auth;
     }
-    add(){
-        return this.x+this.y;
-    }
-    sub(){
-        return this.x+this.y;
-    }
-    incX(step=1){
-        return this.x = this.x + step;
-    }
-}
-
-let obj = Calc(2,6);
-obj.add();
-obj.incX();
-obj.incX(100);
+};
 
 
+const user3 = new User('tom111', 'qwerty');
+const stud3 = new Stud('Tom', 'Fox', user3);
+console.log(user3);
+console.log(stud3);
