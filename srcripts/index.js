@@ -1,35 +1,53 @@
 class User{
     constructor(login, password){
-        this.login = login;
-        this.password = password;
+        this._login = login;
+        this._password = password;
+    }
+    set login(value){
+        this._login = value;
+    }
+    get login(){
+        return this._login;
+    }
+    set password(value){
+        this._password = value;
+    }
+    get password(){
+        return this._password;
+    }
+    updatePassword(value){
+        this.password = value;
     }
     out(){
-        console.log('out method of User class');
-        console.log("Login: ", this.login);
-    }
-    printAuth(){
-        console.log(`Auth: ${this.login} ${this.password}`);
+        console.log(`Login: ${this.login} Password: ${this.password}`);
     }
 };
 
-class Stud extends User{
-    constructor(name, surname, login, password){
-        // super - вызов конструктора родителя
-        super(login, password);
-        this.name = name;
-        this.surname = surname;
+class Worker extends User{
+    constructor(salary, job, auth={login:'user', password:'user'}) {
+        super(auth.login, auth.password);
+        this.salary = salary;
+        this.job = job;        
     }
-    out(){
-        super.out();
-        console.log(`personal info: ${this.name} ${this.surname}`);
+    calc12Salaries(){
+        return this.salary*12;
     }
-    printFullname(){
-        console.log(`Fullname: ${this.name} ${this.surname}`);
-    }
-};
+}
+
+const worker1 = new Worker(10000, 'dev', {login: 'vasya', password: 'qwerty'});
+console.log(worker1.calc12Salaries());
+worker1.out();
+worker1.updatePassword('admin');
+worker1.out();
 
 
-const stud1 = new Stud('Tom', 'Fox', 'tom1', 'qwerty');
-stud1.printFullname();
-stud1.printAuth();
-stud1.out();
+
+//class Worker  - salary, job
+// extends User
+// method: подсчитать зарплату на год
+
+//*** */
+// _ User сделть слубжебными поля логина и пароля
+// создать метод который обновляет пароль
+
+
