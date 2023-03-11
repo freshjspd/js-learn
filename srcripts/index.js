@@ -1,45 +1,82 @@
-class Author{
-    static countAuthors = 0;
-    constructor(name){
-        this.name = name;
-        Author.countAuthors ++;
-    }
-}
+// деструктуризация массивов
+const arr = ["val1", "val2", "val3", "val4", "val5"];
+const arr0 = arr[0];
+const arr1 = arr[1];
+//const [a0, a1] = arr;
+//const [a0, a1,,a3] = arr;
+//const [a0, ...rest] = arr;
+const[a0,,a2,...rest] = arr; //a0-val1, a2-val3, rest - [val4,val5]
 
-let author1 = new Author('Nike Adson');
-let author2 = new Author('Tom Fox');
-let author3 = new Author('John Tomson');
-console.log('Total count: ', Author.countAuthors);
+const arr2 = ["v1", [10,20,30,40,50], "v2", "v3", "v4", "v5"];
 
-class Worker{
-    static countPeople = 0;
-    static money = [];
-    constructor(name, salary){
-        this.name = name;
-        this.salary = salary;
-        Worker.countPeople++;
-        Worker.money.push(this.salary);
-    }
-    static compareTwoSalary(worker1, worker2){
-        if(worker1.salary > worker2.salary){
-            console.log(`worker ${worker1.name} has tha salary bigger than worker ${worker2.name}`);
-        } else{
-            console.log(`worker ${worker2.name} has tha salary bigger than worker ${worker1.name}`);
+//const [,result] = arr2;
+//console.log(result);
+
+const[,[,,result]] = arr2;
+
+// деструктуризация обьектов
+
+const user = {
+    name: 'Vasya',
+    surname: 'Test',
+    car: {
+        model: 'modelX',
+        color: 'black',
+        year: 2020,
+        engine: {
+            power: 2,
+            year: 2019
         }
     }
-    static totalSumForMonth(){
-        for (let i of Worker.money){
-            sum += i;
-          }
-          return sum;
-         }
 };
 
-let w1 = new Worker('Tom', 10000);
-let w2 = new Worker('John', 12000);
-let w3 = new Worker('Ann', 10000);
-let w4 = new Worker('Nike', 11000);
+//user.name;
 
-Worker.compareTwoSalary(w1, w2);
-Worker.compareTwoSalary(w3, w4);
+const {name} = user;
+console.log(name);
+const {firstName, lastName} = user;
+console.log(firstName, lastName);
+
+//const {car:{engine: power}} = user;
+const {car: model} = user;
+
+
+const obj1 = {
+    name: 'Tom',
+    surname: 'Adson'
+};
+
+const obj2 = {
+    name: 'Nike',
+    age: 20,
+}
+
+const Tom = {
+    ...obj1,
+    ...obj2
+};
+
+
+class User{
+    constructor(login, password){
+        this.login = login;
+        this.password = password;
+    }
+};
+
+class Stud extends User{
+    constructor(name, surname, auth){
+        const {login, password} = auth;
+        super(login, password);
+        this.name = name;
+        this.surname = surname;
+    }
+};
+
+
+const stud1 = new Stud('Tom', 'Fox', {login:'tom1', password:'qwerty'});
+
+
+
+
 
