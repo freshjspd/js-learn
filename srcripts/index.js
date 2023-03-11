@@ -5,24 +5,32 @@
 // 1. вернуть массив в виде [from to]
 // 2. validate который проверяет входит ли число X  в диапазон
 
+
 class RangeValidator{
     constructor(from, to){
-        this.from = from;
-        this.to = to;
-        if(isNaN(from) || !isFinite(from)){console.log('params FROM: error');}
-        if(isNaN(to) || !isFinite(to)){console.log('params TO: error');}
-        if(this.from > this.to){
-            const copyFrom = this.from;
-            this.from = this.to;
-            this.to = copyFrom;
+        from = Number(from);
+        to = Number(to);
+        if(isNaN(from) == true){
+            throw new Error('params FROM: error');
         }
-
+        if(isNaN(to)){
+            throw new Error('params TO: error');
+        }
+        if(from > to){
+            this.from = to;
+            this.to = from;
+        } else{
+            this.from = from;
+            this.to = to;
+        }
     }
     range(){
         return [this.from, this.to];
     }
     validate(value){
-        if(isNaN(value) || !isFinite(value)){console.log('VALUE: error');}
+        if(isNaN(value) || !isFinite(value)){
+            throw new Error('VALUE: error');
+        }
         if(value >= this.from && value <=this.to){
             return true;
         }
@@ -34,4 +42,6 @@ let range1 = new RangeValidator(10, 100);
 console.log(range1.range());
 console.log('Validate 77: ',range1.validate(77));
 console.log('Validate 200: ',range1.validate(200));
+let range2 = new RangeValidator("hello", 100);
+console.log(range2);
 
