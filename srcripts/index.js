@@ -1,53 +1,37 @@
-class User{
-    constructor(login, password){
-        this._login = login;
-        this._password = password;
-    }
-    set login(value){
-        this._login = value;
-    }
-    get login(){
-        return this._login;
-    }
-    set password(value){
-        this._password = value;
-    }
-    get password(){
-        return this._password;
-    }
-    updatePassword(value){
-        this.password = value;
-    }
-    out(){
-        console.log(`Login: ${this.login} Password: ${this.password}`);
-    }
-};
+// class RangeValidator
+// [10 100] 
+// свойства/поля: limit1 limit2  // from to
+// methods
+// 1. вернуть массив в виде [from to]
+// 2. validate который проверяет входит ли число X  в диапазон
 
-class Worker extends User{
-    constructor(salary, job, auth={login:'user', password:'user'}) {
-        super(auth.login, auth.password);
-        this.salary = salary;
-        this.job = job;        
+class RangeValidator{
+    constructor(from, to){
+        this.from = from;
+        this.to = to;
+        if(isNaN(from) || !isFinite(from)){console.log('params FROM: error');}
+        if(isNaN(to) || !isFinite(to)){console.log('params TO: error');}
+        if(this.from > this.to){
+            const copyFrom = this.from;
+            this.from = this.to;
+            this.to = copyFrom;
+        }
+
     }
-    calc12Salaries(){
-        return this.salary*12;
+    range(){
+        return [this.from, this.to];
+    }
+    validate(value){
+        if(isNaN(value) || !isFinite(value)){console.log('VALUE: error');}
+        if(value >= this.from && value <=this.to){
+            return true;
+        }
+        return false;
     }
 }
 
-const worker1 = new Worker(10000, 'dev', {login: 'vasya', password: 'qwerty'});
-console.log(worker1.calc12Salaries());
-worker1.out();
-worker1.updatePassword('admin');
-worker1.out();
-
-
-
-//class Worker  - salary, job
-// extends User
-// method: подсчитать зарплату на год
-
-//*** */
-// _ User сделть слубжебными поля логина и пароля
-// создать метод который обновляет пароль
-
+let range1 = new RangeValidator(10, 100);
+console.log(range1.range());
+console.log('Validate 77: ',range1.validate(77));
+console.log('Validate 200: ',range1.validate(200));
 
