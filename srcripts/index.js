@@ -1,47 +1,45 @@
-// class RangeValidator
-// [10 100] 
-// свойства/поля: limit1 limit2  // from to
-// methods
-// 1. вернуть массив в виде [from to]
-// 2. validate который проверяет входит ли число X  в диапазон
-
-
-class RangeValidator{
-    constructor(from, to){
-        from = Number(from);
-        to = Number(to);
-        if(isNaN(from) == true){
-            throw new Error('params FROM: error');
-        }
-        if(isNaN(to)){
-            throw new Error('params TO: error');
-        }
-        if(from > to){
-            this.from = to;
-            this.to = from;
-        } else{
-            this.from = from;
-            this.to = to;
-        }
-    }
-    range(){
-        return [this.from, this.to];
-    }
-    validate(value){
-        if(isNaN(value) || !isFinite(value)){
-            throw new Error('VALUE: error');
-        }
-        if(value >= this.from && value <=this.to){
-            return true;
-        }
-        return false;
+class Author{
+    static countAuthors = 0;
+    constructor(name){
+        this.name = name;
+        Author.countAuthors ++;
     }
 }
 
-let range1 = new RangeValidator(10, 100);
-console.log(range1.range());
-console.log('Validate 77: ',range1.validate(77));
-console.log('Validate 200: ',range1.validate(200));
-let range2 = new RangeValidator("hello", 100);
-console.log(range2);
+let author1 = new Author('Nike Adson');
+let author2 = new Author('Tom Fox');
+let author3 = new Author('John Tomson');
+console.log('Total count: ', Author.countAuthors);
+
+class Worker{
+    static countPeople = 0;
+    static money = [];
+    constructor(name, salary){
+        this.name = name;
+        this.salary = salary;
+        Worker.countPeople++;
+        Worker.money.push(this.salary);
+    }
+    static compareTwoSalary(worker1, worker2){
+        if(worker1.salary > worker2.salary){
+            console.log(`worker ${worker1.name} has tha salary bigger than worker ${worker2.name}`);
+        } else{
+            console.log(`worker ${worker2.name} has tha salary bigger than worker ${worker1.name}`);
+        }
+    }
+    static totalSumForMonth(){
+        for (let i of Worker.money){
+            sum += i;
+          }
+          return sum;
+         }
+};
+
+let w1 = new Worker('Tom', 10000);
+let w2 = new Worker('John', 12000);
+let w3 = new Worker('Ann', 10000);
+let w4 = new Worker('Nike', 11000);
+
+Worker.compareTwoSalary(w1, w2);
+Worker.compareTwoSalary(w3, w4);
 
