@@ -1,15 +1,35 @@
-const list = document.getElementById("usersList");
+let list = document.querySelector(".usersList");
+const container = document.querySelector('.container');
+const next = document.getElementById('next');
+const prev = document.getElementById('prev');
+const idpage = document.getElementById('idpage');
 
 const opt = {
-    results: 15,
+    results: 10,
     seed: 'abc',
     page: 1
 };
 
-fetch(`https://randomuser.me/api/?results=${opt.results}&seed=${opt.seed}`)
+prev.onclick = function(){
+    if(opt.page > 1){
+        opt.page--;
+        load(opt);
+    }
+}
+next.onclick = function(){
+    opt.page++;
+    load(opt);
+}
+
+load(opt);
+
+function load(opt){
+    fetch(`https://randomuser.me/api/?results=${opt.results}&seed=${opt.seed}&page=${opt.page}`)
     .then(res => res.json())
-    .then(gettingData)
+    .then(({results}) => gettingData(results))
     .catch(errorLoad);
+}
+
 
 function errorLoad(res){
     const error = new Error(`Loading Error. ${res}`);
@@ -18,9 +38,12 @@ function errorLoad(res){
     document.body.append(p);
 }
 
-function gettingData(data){
-    const users = data.results;
-    console.log(users);
+function gettingData(users){
+    idpage.innerText = `page: ${opt.page}`;
+    list.remove();
+    list = document.createElement('ul');
+    list.classList.add('usersList');
+    container.append(list);
     users.forEach( u => {
         list.append(createCard(u));
     });
