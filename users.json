@@ -2,26 +2,28 @@
     {
         "name": "name1",
         "surname": "surname1",
-        "img": "https://www.flaticon.com/free-icon/user_456283?term=user&related_id=456283"
+        "imgSrc": "./ava.png"
     },
     {
         "name": "name2",
         "surname": "surname2",
-        "img": "https://www.flaticon.com/free-icon/user_456283?term=user&related_id=456283"
+        "imgSrc": "./ava.png"
     },
     {
         "name": "name3",
         "surname": "surname3",
-        "img": "https://www.flaticon.com/free-icon/user_456283?term=user&related_id=456283"
+        "imgSrc": "./ava.png"
+    
     },
     {
         "name": "name4",
         "surname": "surname4",
-        "img": "https://www.flaticon.com/free-icon/user_456283?term=user&related_id=456283"
+        "imgSrc": "./ava.png"
     },
     {
         "name": "name5",
         "surname": "surname5",
-        "img": "https://www.flaticon.com/free-icon/user_456283?term=user&related_id=456283"
+        "imgSrc": "./ava.png"
+
     }
 ]
