@@ -1,15 +1,18 @@
-'use strict';
-
-const square = document.querySelector('.item');
-let deg = 0;
-setInterval(foo, 1000/60);
+// setInterval, setTimeout
 
 function foo(){
-    square.style.transform=`rotate(${deg+=10}deg)`
+    console.log('hello foo');
 }
 
-const btn = document.querySelector('button');
+let id = setTimeout(foo, 2*1000);
+//setTimeout(foo, 0);
 
-btn.onclick = function(){
-    alert('Hello!');
+//2
+function foo2(name){
+    console.log(`Hello, ${name}`);
 }
+
+setTimeout(foo2, 3*1000, 'name4');
+setTimeout(foo2, 1000, 'name1');
+setTimeout(foo2, 0, 'name2');
+setTimeout(foo2, 2*1000, 'name3');
