@@ -1,6 +1,12 @@
 const list = document.getElementById("usersList");
 
-fetch('../users111.json')
+const opt = {
+    results: 15,
+    seed: 'abc',
+    page: 1
+};
+
+fetch(`https://randomuser.me/api/?results=${opt.results}&seed=${opt.seed}`)
     .then(res => res.json())
     .then(gettingData)
     .catch(errorLoad);
@@ -12,23 +18,25 @@ function errorLoad(res){
     document.body.append(p);
 }
 
-function gettingData(users){
+function gettingData(data){
+    const users = data.results;
+    console.log(users);
     users.forEach( u => {
         list.append(createCard(u));
-    })
+    });
 }
 
 function createCard(user){
     const card = document.createElement('div');
     card.classList.add('card_container');
 
-    const imgContainer = createUserPhoto(user.imgSrc);
+    const imgContainer = createUserPhoto(user.picture.large);
     card.append(imgContainer);
     console.log(user.imgSrc);
 
     const infoContainer = document.createElement('div');
     infoContainer.classList.add('info_container');
-    const userFullName = createUserFullName(user.name, user.surname);
+    const userFullName = createUserFullName(user.name);
     infoContainer.append(userFullName);
     card.append(infoContainer);
 
@@ -45,10 +53,10 @@ function createUserPhoto(userImgSrc){
     return imgContainer;
 }
 
-function createUserFullName(name, surname){
+function createUserFullName(name){
     const userFullName = document.createElement('p');
     userFullName.classList.add('user_fullname');
-    userFullName.innerText = name+" "+surname;
+    userFullName.innerText = `${name.title}. ${name.first} ${name.last}`;
     return userFullName;
 }
 
