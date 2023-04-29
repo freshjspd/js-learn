@@ -1,18 +1,20 @@
-const btn = document.getElementById('loadData');
+// делаем асинхронный вызов загрузки
 
-btn.onclick = function(){
-    fetch('../users.json').then(loadData).then(printData).catch(loadError);
+//fetch , async-await возращают обещание (promise)
+
+async function loadUsers(){
+    try{
+        const res = await fetch('../users.json');
+        const users = res.json();
+        console.log(users);
+
+    } catch(error){
+        console.log(error);
+    }
 }
 
-function loadData(res){
-    return res.json();
-}
+loadUsers();
 
-function printData(data){
-    console.log(data);
-}
+//(loadUsers()).then().catch();
 
-function loadError(res){
-    console.log(res);
-}
 
