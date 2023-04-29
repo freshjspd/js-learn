@@ -1,18 +1,43 @@
-// setInterval, setTimeout
+/*
+const user = {
+    name: 'John',
+    surname: 'Adson',
+    age: 20,
+    isMale: true
+};
 
-function foo(){
-    console.log('hello foo');
+const resUser = JSON.stringify(user);
+
+const gettingUser = JSON.parse(resUser);
+*/
+
+//Задача: асинхр. считать массив пользователей
+
+const store = {
+    users: null,
+    error: null,
+    isFetching: false   //isLoading
+};
+
+const btn = document.getElementById('loadData');
+const request = new XMLHttpRequest();
+
+btn.onclick = function(){
+    request.open("GET", "../users.json", false);
+    request.send();
 }
 
-let id = setTimeout(foo, 2*1000);
-//setTimeout(foo, 0);
+request.onloadstart = function(){ 
+    store.isFetching = true; 
+    console.log(store);
+};
 
-//2
-function foo2(name){
-    console.log(`Hello, ${name}`);
-}
+request.onloadend = function(){
+    store.isFetching = false;
+    if(this.status >= 200 && this.status <300){
+        store.users = JSON.parse(this.responseText);
+    } else{
+        store.error = new Error(`Loading Error. code ${this.status} - ${this.statusText}`);
+    }
+};
 
-setTimeout(foo2, 3*1000, 'name4');
-setTimeout(foo2, 1000, 'name1');
-setTimeout(foo2, 0, 'name2');
-setTimeout(foo2, 2*1000, 'name3');
