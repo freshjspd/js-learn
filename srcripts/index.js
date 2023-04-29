@@ -1,21 +1,14 @@
-const promise1 = new Promise(fun1);
+fetch('../users.json')
+    .then(res => res.json())
+    .then(gettingData)
+    .catch(console.error);
 
-//resolve - да!, reject - нет
-function fun1(resolve, reject){
-    console.log('I am running!');
+function gettingData(users){
+    const list = document.getElementById("usersList");
+
 }
 
-const promise2 = new Promise(getNumBiggerThan5);
 
-function getNumBiggerThan5(resolve, reject){
-    const x = Math.random() * 10;
-    console.log('Number is ',x);
-    if(x >= 5) {
-        resolve(x);
-    } else{
-        const e = new Error(`Reject promise. Number=${x}`);
-        reject(e);
-    }
-}
+
 
 
