@@ -1,89 +1,39 @@
-let list = document.querySelector(".usersList");
-const container = document.querySelector('.container');
-const next = document.getElementById('next');
-const prev = document.getElementById('prev');
-const idpage = document.getElementById('idpage');
+/*
+// task1
+// вернуть разрешение промиса через 3 секунды
+const promise1 = new Promise(fun1);
 
-const opt = {
-    results: 10,
-    seed: 'abc',
-    page: 1
-};
+function fun1(resolve, reject){
+    setTimeout(
+        () => {resolve('Done!'); console.log('ok')}, 
+        3*1000);
+}
 
-prev.onclick = function(){
-    if(opt.page > 1){
-        opt.page--;
-        load(opt);
+// task2
+// вернуть результат промиса для функции которая ожидает число
+
+function task2(x){
+    if (!Number.isNaN(x)) {
+        return new Propmise((resolve, reject) => {
+            resolve(x);
+    })} else{
+        throw new Error('X is not a number');
     }
 }
-next.onclick = function(){
-    opt.page++;
-    load(opt);
+*/
+//task3
+// вывести числа от 1 до 10 через 1/2 сек
+let limit1 = 1, limit2 = 10, time = 1000;
+
+//1
+for(let i=limit1; i<=limit2; i++){
+    setTimeout(() => {console.log(i);}, time);
 }
 
-load(opt);
-
-function load(opt){
-    fetch(`https://randomuser.me/api/?results=${opt.results}&seed=${opt.seed}&page=${opt.page}`)
-    .then(res => res.json())
-    .then(({results}) => gettingData(results))
-    .catch(errorLoad);
-}
-
-
-function errorLoad(res){
-    const error = new Error(`Loading Error. ${res}`);
-    const p = document.createElement('h2');
-    p.innerText = error;
-    document.body.append(p);
-}
-
-function gettingData(users){
-    idpage.innerText = `page: ${opt.page}`;
-    list.remove();
-    list = document.createElement('ul');
-    list.classList.add('usersList');
-    container.append(list);
-    users.forEach( u => {
-        list.append(createCard(u));
-    });
-}
-
-function createCard(user){
-    const card = document.createElement('div');
-    card.classList.add('card_container');
-
-    const imgContainer = createUserPhoto(user.picture.large);
-    card.append(imgContainer);
-    console.log(user.imgSrc);
-
-    const infoContainer = document.createElement('div');
-    infoContainer.classList.add('info_container');
-    const userFullName = createUserFullName(user.name);
-    infoContainer.append(userFullName);
-    card.append(infoContainer);
-
-    return card;
-}
-
-function createUserPhoto(userImgSrc){
-    const imgContainer = document.createElement('div');
-    imgContainer.classList.add('image_container');
-    const imgEl = document.createElement('img');
-    imgEl.setAttribute('src', userImgSrc);
-    imgEl.setAttribute('alt', 'photo');
-    imgContainer.append(imgEl);
-    return imgContainer;
-}
-
-function createUserFullName(name){
-    const userFullName = document.createElement('p');
-    userFullName.classList.add('user_fullname');
-    userFullName.innerText = `${name.title}. ${name.first} ${name.last}`;
-    return userFullName;
-}
-
-
-
-
+//2
+const timeId = setInterval(() => {
+    limit1 <= limit2 ? 
+    console.log(limit1++):
+    clearInterval(timeId)
+}, time);
 
